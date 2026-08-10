@@ -1,0 +1,232 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - matched to the Secbyte logo gradient (LIGHT theme) */
+  --color-bg: #FAFAFB;
+  --color-surface: #FFFFFF;
+  --color-surface2: #F1F2F7;
+  --color-border: #E4E5EF;
+
+  --color-ink: #16171F;
+  --color-muted: #5B5F72;
+
+  --color-primary: #5B4FE8;
+  --color-secondary: #9B4FE8;
+  --color-accent: #F5893A;
+  --color-accent-dim: #d9701f;
+  --color-warning: #EC4E9E;
+
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+body {
+  @apply bg-bg text-ink font-body antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display text-ink tracking-tight;
+}
+
+a {
+  @apply text-accent transition-colors duration-300;
+}
+
+a:hover {
+  @apply text-secondary;
+}
+
+::selection {
+  background: rgba(245, 137, 58, 0.2);
+  color: #16171F;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAFB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D3D5E3;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8BBD1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.grid-bg {
+  position: relative;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(rgba(155, 79, 232, .14) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.content {
+  @apply relative z-10;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #5B4FE8 0%, #9B4FE8 35%, #F5893A 70%, #EC4E9E 100%);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #5B4FE8 0%, #9B4FE8 40%, #F5893A 75%, #EC4E9E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-text-soft {
+  background: linear-gradient(135deg, #5B4FE8 0%, #9B4FE8 40%, #F5893A 75%, #EC4E9E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.6;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-3 uppercase text-xs font-semibold tracking-[0.2em];
+  @apply text-accent font-mono;
+}
+
+.eyebrow::before {
+  content: "// " attr(data-index);
+  color: rgba(245, 137, 58, .6);
+}
+
+.eyebrow::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: rgba(245, 137, 58, .5);
+}
+
+.eyebrow-plain {
+  @apply inline-flex items-center gap-3 uppercase text-xs font-semibold tracking-[0.2em];
+  @apply text-muted font-mono;
+}
+
+.eyebrow-plain::before {
+  content: "//";
+  color: rgba(245, 137, 58, .6);
+}
+
+.divider {
+  @apply border-t border-dashed border-border my-8;
+}
+
+.card {
+  @apply relative rounded-xl p-8;
+  @apply bg-surface border border-border;
+  @apply transition-all duration-300;
+  box-shadow: 0 1px 3px rgba(20, 20, 43, 0.06);
+}
+
+.card:hover {
+  border-color: var(--color-warning);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(20, 20, 43, .12);
+}
+
+.card::before, .card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+
+.card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--color-accent);
+  border-left: 2px solid var(--color-accent);
+}
+
+.card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+
+.panel {
+  @apply rounded-xl p-6 bg-surface2 border border-border;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2;
+  @apply px-6 py-3 rounded-lg;
+  @apply font-semibold text-sm;
+  @apply transition-all duration-300;
+  @apply cursor-pointer;
+  background: linear-gradient(135deg, var(--color-accent)  100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(91, 79, 232, .3);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2;
+  @apply px-6 py-3 rounded-lg;
+  @apply font-semibold text-sm;
+  @apply transition-all duration-300;
+  @apply cursor-pointer;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: rgba(91, 79, 232, .06);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.text-accent-glow {
+  color: var(--color-accent);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.glass {
+  background: rgba(255,255,255,.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(20,20,43,.06);
+  border-radius: 16px;
+}
+
+.section {
+  @apply py-24;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Solid heading color with subtle depth shadow - replaces gradient text */
+.text-shaded {
+  color: var(--color-ink);
+  text-shadow: 0 2px 4px rgba(20, 20, 43, 0.12);
+}
