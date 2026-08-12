@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Seo from "../components/Seo";
 import aboutHero from "../assets/about-hero.jpg";
+import { useNavigate } from "react-router-dom";
 
 /* ==========================================================================
    LOGO — hexagonal shield + circuit-node monogram, draws itself on mount
@@ -422,6 +423,8 @@ function ThreatIntelPanel() {
 
 export default function About() {
   const heroRef = useRef(null);
+   const navigate = useNavigate()
+   const navigate = useNavigate();
 
   useEffect(() => {
     const el = heroRef.current;
@@ -481,8 +484,8 @@ export default function About() {
         and digital marketing.
       </p>
 
-      <button className="hero-primary-btn">
-        Discover Our Story
+<button className="hero-primary-btn" onClick={() => navigate("/contact")}>
+   Discover Our Story
         <span>→</span>
       </button>
     </div>
@@ -594,7 +597,7 @@ export default function About() {
             <h2 className="text-ink text-2xl font-bold mb-4">
               Ready to build something secure?
             </h2>
-            <button className="btn-primary">Get Free Consultation</button>
+<button className="btn-primary" onClick={() => navigate("/contact")}>Get Free Consultation</button>
           </Reveal>
         </div>
 
