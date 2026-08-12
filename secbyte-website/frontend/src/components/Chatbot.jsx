@@ -81,7 +81,7 @@ export default function Chatbot() {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {open && (
-        <div className="mb-4 flex h-[30rem] w-80 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-xl">
+        <div className="mb-4 flex h-[70vh] max-h-[30rem] w-[calc(100vw-3rem)] max-w-80 flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-xl">
           <div className="bg-accent flex items-center justify-between px-4 py-3">
             <p className="text-sm font-semibold text-white">Secbyte Assistant</p>
             <button onClick={() => setOpen(false)} aria-label="Close chat" className="text-white/80 hover:text-white">

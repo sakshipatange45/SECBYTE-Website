@@ -21,6 +21,11 @@
   --font-mono: "IBM Plex Mono", monospace;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 body {
   @apply bg-bg text-ink font-body antialiased;
 }
