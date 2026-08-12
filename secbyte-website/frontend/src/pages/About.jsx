@@ -423,7 +423,6 @@ function ThreatIntelPanel() {
 
 export default function About() {
   const heroRef = useRef(null);
-   const navigate = useNavigate()
    const navigate = useNavigate();
 
   useEffect(() => {
