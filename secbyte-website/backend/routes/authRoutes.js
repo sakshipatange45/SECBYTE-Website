@@ -26,15 +26,6 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
-// TEMPORARY - REMOVE AFTER USE
-router.post("/register-temp", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-    const user = await User.create({ name, email, password, role: "admin" });
-    res.status(201).json({ success: true, message: "Admin created", user: { email: user.email } });
-  } catch (err) {
-    res.status(400).json({ success: false, message: err.message });
-  }
-});
+
 
 module.exports = router;
