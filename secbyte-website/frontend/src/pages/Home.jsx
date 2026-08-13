@@ -18,7 +18,8 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import TiltCard from "../components/TiltCard";
 import SecurityScanWidget from "../components/SecurityScanWidget";
 import useInView from "../hooks/useInView";
-import { services, highlights, whyChooseUs, testimonials, blogPosts } from "../lib/data";
+import { services, highlights, whyChooseUs, testimonials } from "../lib/data";
+import { apiGet } from "../lib/api";
 import whyChooseUsImage from "../assets/why.png";
 
 function RevealSection({ children, className = "" }) {
@@ -55,12 +56,19 @@ function Blob({ className = "" }) {
 
 export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    apiGet("/blog")
+      .then((res) => setBlogPosts((res.data || []).slice(0, 3)))
+      .catch(() => setBlogPosts([]));
   }, []);
 
   const [statsRef, statsInView] = useInView();
@@ -202,7 +210,7 @@ export default function Home() {
                 </div>
 
                 <p className="mt-6 text-lg leading-8 text-ink md:text-xl">
-                  “{testimonials[activeTestimonial].message}”
+                  "{testimonials[activeTestimonial].message}"
                 </p>
 
                 <div className="mt-8 flex items-center gap-4">
