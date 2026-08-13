@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import {
-  ShieldCheck,
   Mail,
   Phone,
   MapPin,
   Globe,
 } from "lucide-react";
+import logo from "../assets/logo2.jpeg";
 
 // lucide-react removed brand/logo icons (LinkedIn, Twitter, etc.) from
 // recent versions, so we draw LinkedIn as a plain inline SVG instead of
@@ -63,9 +63,12 @@ export default function Footer() {
           <div className="lg:col-span-2">
 
             <Link to="/" className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary">
-                <ShieldCheck className="h-6 w-6 text-white" />
-              </div>
+              <img
+                src={logo}
+                alt="Secbyte Technologies Logo"
+                style={{ mixBlendMode: "multiply" }}
+                className="h-12 w-12 rounded-xl object-contain"
+              />
 
               <div>
                 <h2 className="text-2xl font-bold text-ink">
@@ -108,7 +111,7 @@ export default function Footer() {
                 before, now a complete, evenly balanced row. */}
             <div className="mt-8 flex gap-4">
               {socialLinks.map(({ href, label, icon: Icon }) => (
-                <a
+                
                   key={label}
                   href={href}
                   target="_blank"
