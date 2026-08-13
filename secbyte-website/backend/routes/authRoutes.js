@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { protect } = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -27,5 +28,23 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// POST /api/auth/change-password
+router.post("/change-password", protect, async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
+    const user = await User.findById(req.user.id).select("+password");
+
+    if (!(await user.matchPassword(oldPassword))) {
+      return res.status(401).json({ success: false, message: "Current password is incorrect" });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.json({ success: true, message: "Password updated successfully" });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
 
 module.exports = router;
