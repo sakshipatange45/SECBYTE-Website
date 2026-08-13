@@ -28,20 +28,26 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// POST /api/auth/change-password
-router.post("/change-password", protect, async (req, res) => {
+// POST /api/auth/update-profile
+router.post("/update-profile", protect, async (req, res) => {
   try {
-    const { oldPassword, newPassword } = req.body;
+    const { newEmail, oldPassword, newPassword } = req.body;
     const user = await User.findById(req.user.id).select("+password");
 
     if (!(await user.matchPassword(oldPassword))) {
       return res.status(401).json({ success: false, message: "Current password is incorrect" });
     }
 
-    user.password = newPassword;
+    if (newEmail) user.email = newEmail;
+    if (newPassword) user.password = newPassword;
+
     await user.save();
 
-    res.json({ success: true, message: "Password updated successfully" });
+    res.json({
+      success: true,
+      message: "Profile updated successfully",
+      user: { id: user._id, name: user.name, email: user.email, role: user.role },
+    });
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });
   }
