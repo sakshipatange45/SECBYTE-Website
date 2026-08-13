@@ -111,7 +111,7 @@ export default function Footer() {
                 before, now a complete, evenly balanced row. */}
             <div className="mt-8 flex gap-4">
               {socialLinks.map(({ href, label, icon: Icon }) => (
-                
+                <a
                   key={label}
                   href={href}
                   target="_blank"
