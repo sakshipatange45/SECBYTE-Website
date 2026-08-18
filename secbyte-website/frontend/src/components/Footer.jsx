@@ -92,12 +92,12 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 text-muted">
                 <Mail className="h-5 w-5 text-accent" />
-                info@secbyte.in
+                info@secbytetechnologies.com
               </div>
 
               <div className="flex items-center gap-3 text-muted">
                 <Phone className="h-5 w-5 text-accent" />
-                +91 98225 40654
+                +91 9373890640
               </div>
 
               <div className="flex items-center gap-3 text-muted">
