@@ -68,7 +68,8 @@ export default function Contact() {
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-[#E8B04B]" />
                 <div>
                   <p className="font-body text-xs uppercase tracking-wide text-[#8892A0]">Email</p>
-                  <p className="mt-1 font-body text-sm text-[#F6F3EC]">hello@secbyte.example</p>
+                  <p className="mt-1 font-body text-sm text-[#F6F3EC]">info@secbytetechnologies.com
+                  </p>
                 </div>
               </div>
 
@@ -76,7 +77,7 @@ export default function Contact() {
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#E8B04B]" />
                 <div>
                   <p className="font-body text-xs uppercase tracking-wide text-[#8892A0]">Phone</p>
-                  <p className="mt-1 font-body text-sm text-[#F6F3EC]">+91 00000 00000</p>
+                  <p className="mt-1 font-body text-sm text-[#F6F3EC]">+91 9373890640</p>
                 </div>
               </div>
 
